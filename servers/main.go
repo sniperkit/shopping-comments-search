@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"sync"
 	"time"
+
+	"github.com/tidwall/gjson"
 )
 
 var waitgroup sync.WaitGroup
@@ -46,18 +48,23 @@ func main() {
 	// now1 := time.Now()
 	// fmt.Println(now1.Sub(now))
 
-	now := time.Now()
-	for i := 0; i <= 1000; i++ {
-		waitgroup.Add(1)
-		go request(i)
-	}
-	waitgroup.Wait()
-	now1 := time.Now()
-
-	// for i := 0; i <= 1; i++ {
-	// 	a := <- ch
-	// 	fmt.Println(a)
+	// now := time.Now()
+	// for i := 0; i <= 1000; i++ {
+	// 	waitgroup.Add(1)
+	// 	go request(i)
 	// }
-	// // fmt.Println(ch)
-	fmt.Println(now1.Sub(now))
+	// waitgroup.Wait()
+	// now1 := time.Now()
+
+	// // for i := 0; i <= 1; i++ {
+	// // 	a := <- ch
+	// // 	fmt.Println(a)
+	// // }
+	// // // fmt.Println(ch)
+	// fmt.Println(now1.Sub(now))
+
+	const json = `{"name":[{"wang": 123}, {"wang": 456}]}`
+
+	value := gjson.Get(json, "name.#.wang")
+	println(value.String())
 }
