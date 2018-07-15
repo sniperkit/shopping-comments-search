@@ -1,0 +1,11 @@
+{
+    "test": "ff",
+    "redis": {
+        "addr": "",
+        "password": ""
+    },
+    "mongo": {
+        "uri": "mongodb://user:pass@ip:27017",
+        "db": "test"
+    }
+}
