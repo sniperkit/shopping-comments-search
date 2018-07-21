@@ -1,0 +1,10 @@
+{
+    "redis": {
+        "addr": "127.0.0.1:6379",
+        "password": "password"
+    },
+    "mongo": {
+        "uri": "mongodb://root:password@127.0.0.1:27017",
+        "db": "test"
+    }
+}
